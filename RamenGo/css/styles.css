@@ -12,4 +12,18 @@ body {
     background-color: #EFEFEF;
     font-family: "Questrial", sans-serif;
     color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 3em;
+}
+
+.logo img {
+    max-width: 250px;
+    width: 100%;
 }
