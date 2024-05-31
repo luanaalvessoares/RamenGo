@@ -34,6 +34,7 @@ fetchData('https://api.tech.redventures.com.br/broths')
 fetchData('https://api.tech.redventures.com.br/proteins')
     .then(data => {
         proteins.push(...data);
+        renderItems(proteins, '.container-proteins');
         console.log('Lista de Proteins:', proteins);
     })
     .catch(error => console.error('Não conseguimos obter os Proteins:', error));
