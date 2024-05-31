@@ -22,3 +22,7 @@ async function fetchData(url) {
 fetchData('https://api.tech.redventures.com.br/broths')
     .then(data => console.log('Lista de Broths:', data))
     .catch(error => console.error('Não conseguimos obter os Broths:', error));
+
+fetchData('https://api.tech.redventures.com.br/proteins')
+    .then(data => console.log('Lista de Proteins:', data))
+    .catch(error => console.error('Não conseguimos obter os Proteins:', error));
