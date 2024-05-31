@@ -1,36 +1,76 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 *, *::before, *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #EFEFEF;
-    font-family: "Questrial", sans-serif;
-    color: #333;
-    max-width: 800px;
-    margin: 0 auto;
+  background-color: #EFEFEF;
+  font-family: "Questrial", sans-serif;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-inline: 1em;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-block: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 2em;
 }
 
 .logo img {
-    max-width: 250px;
-    width: 100%;
+  max-width: 250px;
+  width: 100%;
 }
 
 .serviceTitle h1 {
-    font-size: 1.8em;
-    text-align: center;
+  font-size: 1.8em;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 2em;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.container .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-inline: 1em;
+  gap: 10px;
+}
+
+.container .item h2 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.container .item img {
+  max-width: 100px;
+  width: 100%;
+}
+
+.container .item p {
+  font-size: 15px;
+  text-align: center;
+  width: 80%;
+  margin-top: 15px;
+  color: #5E5E5E;
+}
+
+.container .item h4 {
+  font-size: 1.4em;
 }
 
 @media (max-width: 576px) {
@@ -45,5 +85,23 @@ body {
     .serviceTitle h1 {
         font-size: 1.4em;
         text-align: center;
+    }
+
+    .container .item {
+      padding-inline: 10px;
+    }
+
+    .container .item h2 {
+      font-size: 18px;
+    }
+
+    .container .item img {
+      width: 60px;
+    }
+
+    .container .item p {
+      font-size: 14px;
+      width: 100%;
+      margin-top: 8px;
     }
 }
