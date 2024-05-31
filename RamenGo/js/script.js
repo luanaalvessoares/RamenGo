@@ -1,6 +1,7 @@
 const broths = [];
 const proteins = [];
 
+// Requisições da API
 async function fetchData(url) {
     try {
         const response = await fetch(url, {
@@ -25,6 +26,7 @@ async function fetchData(url) {
 fetchData('https://api.tech.redventures.com.br/broths')
     .then(data => {
         broths.push(...data);
+        renderItems(broths, '.container-broths');
         console.log('Lista de Broths:', broths);
     })
     .catch(error => console.error('Não conseguimos obter os Broths:', error));
@@ -35,3 +37,25 @@ fetchData('https://api.tech.redventures.com.br/proteins')
         console.log('Lista de Proteins:', proteins);
     })
     .catch(error => console.error('Não conseguimos obter os Proteins:', error));
+
+
+// Renderização dos ingredientes
+function renderItems(items, containerId) {
+    const container = document.querySelector(containerId);
+    items.forEach(item => {
+        const element = document.createElement('div');
+        element.className = 'item';
+        element.innerHTML = `
+            <h3>${item.name}</h3>
+            <img src="${item.imageInactive}" alt="${item.name}" />
+            <p>${item.description}</p>
+            <p>Price: $${item.price}</p>
+        `;
+        element.addEventListener('click', function() {
+            this.classList.toggle('active');
+            console.log('Selected ID:', item.id);
+            this.querySelector('img').src = this.classList.contains('active') ? item.imageActive : item.imageInactive;
+        });
+        container.appendChild(element);
+    });
+}
