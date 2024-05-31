@@ -20,10 +20,30 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-block: 3em;
+    padding-block: 2em;
 }
 
 .logo img {
     max-width: 250px;
     width: 100%;
+}
+
+.serviceTitle h1 {
+    font-size: 1.8em;
+    text-align: center;
+}
+
+@media (max-width: 576px) {
+    .logo {
+        padding-block: 1em;
+    }
+
+    .logo img {
+        width: 150px;
+    }
+
+    .serviceTitle h1 {
+        font-size: 1.4em;
+        text-align: center;
+    }
 }
