@@ -1,3 +1,6 @@
+const broths = [];
+const proteins = [];
+
 async function fetchData(url) {
     try {
         const response = await fetch(url, {
@@ -20,9 +23,15 @@ async function fetchData(url) {
 }
 
 fetchData('https://api.tech.redventures.com.br/broths')
-    .then(data => console.log('Lista de Broths:', data))
+    .then(data => {
+        broths.push(...data);
+        console.log('Lista de Broths:', broths);
+    })
     .catch(error => console.error('Não conseguimos obter os Broths:', error));
 
 fetchData('https://api.tech.redventures.com.br/proteins')
-    .then(data => console.log('Lista de Proteins:', data))
+    .then(data => {
+        proteins.push(...data);
+        console.log('Lista de Proteins:', proteins);
+    })
     .catch(error => console.error('Não conseguimos obter os Proteins:', error));
