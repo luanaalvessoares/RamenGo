@@ -26,7 +26,7 @@ async function fetchData(url) {
 fetchData('https://api.tech.redventures.com.br/broths')
     .then(data => {
         broths.push(...data);
-        renderItems(broths, '.container-broths');
+        renderItems(broths, '.containerBroths');
         console.log('Lista de Broths:', broths);
     })
     .catch(error => console.error('Não conseguimos obter os Broths:', error));
@@ -34,7 +34,7 @@ fetchData('https://api.tech.redventures.com.br/broths')
 fetchData('https://api.tech.redventures.com.br/proteins')
     .then(data => {
         proteins.push(...data);
-        renderItems(proteins, '.container-proteins');
+        renderItems(proteins, '.containerProteins');
         console.log('Lista de Proteins:', proteins);
     })
     .catch(error => console.error('Não conseguimos obter os Proteins:', error));
@@ -43,6 +43,8 @@ fetchData('https://api.tech.redventures.com.br/proteins')
 // Renderização dos ingredientes
 function renderItems(items, containerId) {
     const container = document.querySelector(containerId);
+    let activeElement = null;  // Guarda o elemento atualmente ativo
+
     items.forEach(item => {
         const element = document.createElement('div');
         element.className = 'item';
@@ -52,10 +54,25 @@ function renderItems(items, containerId) {
                              <h4>$${item.price}</h4>`;
 
         element.addEventListener('click', function() {
+            // Se há um elemento ativo e é diferente do atual, desative-o
+            if (activeElement && activeElement !== this) {
+                activeElement.classList.remove('active');
+                activeElement.querySelector('img').src = activeElement.getAttribute('data-inactive');
+            }
+
+            // Ativa ou desativa o elemento clicado
             this.classList.toggle('active');
+            if (this.classList.contains('active')) {
+                this.querySelector('img').src = item.imageActive;
+                this.setAttribute('data-inactive', item.imageInactive);
+                activeElement = this;  // Atualiza o elemento ativo
+            } else {
+                this.querySelector('img').src = item.imageInactive;
+            }
+
             console.log('Selected ID:', item.id);
-            this.querySelector('img').src = this.classList.contains('active') ? item.imageActive : item.imageInactive;
         });
+
         container.appendChild(element);
     });
 }

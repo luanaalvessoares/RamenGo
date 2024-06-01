@@ -13,8 +13,10 @@ body {
   font-family: "Questrial", sans-serif;
   color: #333;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 10px auto;
   padding-inline: 1em;
+  box-shadow: 0px 0px 5px 0px #7d7d7d;
+  border-radius: 15px;
 }
 
 .logo {
@@ -34,7 +36,7 @@ body {
   text-align: center;
 }
 
-.container {
+.containerIngredients {
   display: flex;
   justify-content: space-between;
   padding-block: 2em;
@@ -42,7 +44,7 @@ body {
   margin: 0 auto;
 }
 
-.container .item {
+.containerIngredients .item {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -51,57 +53,61 @@ body {
   gap: 10px;
 }
 
-.container .item h2 {
+.containerIngredients .item h2 {
   font-size: 20px;
   text-align: center;
 }
 
-.container .item img {
+.containerIngredients .item img {
   max-width: 100px;
   width: 100%;
 }
 
-.container .item p {
-  font-size: 15px;
+.containerIngredients .item p {
+  font-size: 13px;
   text-align: center;
-  width: 80%;
   margin-top: 15px;
+  width: 80%;
   color: #5E5E5E;
 }
 
-.container .item h4 {
+.containerIngredients .item h4 {
   font-size: 1.4em;
 }
 
 @media (max-width: 576px) {
-    .logo {
-        padding-block: 1em;
-    }
+  body {
+    margin: 10px;
+  }
 
-    .logo img {
-        width: 150px;
-    }
+  .logo {
+      padding-block: 1em;
+  }
 
-    .serviceTitle h1 {
-        font-size: 1.4em;
-        text-align: center;
-    }
+  .logo img {
+      width: 150px;
+  }
 
-    .container .item {
-      padding-inline: 10px;
-    }
+  .serviceTitle h1 {
+      font-size: 1.4em;
+      text-align: center;
+  }
 
-    .container .item h2 {
-      font-size: 18px;
-    }
+  .containerIngredients .item {
+    padding-inline: 10px;
+  }
 
-    .container .item img {
-      width: 60px;
-    }
+  .containerIngredients .item h2 {
+    font-size: 18px;
+  }
 
-    .container .item p {
-      font-size: 14px;
-      width: 100%;
-      margin-top: 8px;
-    }
+  .containerIngredients .item img {
+    width: 60px;
+  }
+
+  .containerIngredients .item p {
+    font-size: 12px;
+    margin-top: 8px;
+    width: 100%;
+  }
 }
