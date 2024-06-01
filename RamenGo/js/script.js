@@ -1,5 +1,7 @@
 const broths = [];
 const proteins = [];
+let brothId;
+let proteinId;
 
 // Requisições da API
 async function fetchData(url) {
@@ -26,7 +28,7 @@ async function fetchData(url) {
 fetchData('https://api.tech.redventures.com.br/broths')
     .then(data => {
         broths.push(...data);
-        renderItems(broths, '.containerBroths');
+        renderItems(broths, '.containerBroths', brothId);
         console.log('Lista de Broths:', broths);
     })
     .catch(error => console.error('Não conseguimos obter os Broths:', error));
@@ -34,12 +36,13 @@ fetchData('https://api.tech.redventures.com.br/broths')
 fetchData('https://api.tech.redventures.com.br/proteins')
     .then(data => {
         proteins.push(...data);
-        renderItems(proteins, '.containerProteins');
+        renderItems(proteins, '.containerProteins', proteinId);
         console.log('Lista de Proteins:', proteins);
     })
     .catch(error => console.error('Não conseguimos obter os Proteins:', error));
 
 
+// Renderização dos ingredientes
 // Renderização dos ingredientes
 function renderItems(items, containerId) {
     const container = document.querySelector(containerId);
@@ -64,8 +67,19 @@ function renderItems(items, containerId) {
                 this.querySelector('img').src = item.imageActive;
                 this.setAttribute('dataInactive', item.imageInactive);
                 activeElement = this;
+                // Atualiza diretamente a variável externa apropriada
+                if (containerId.includes('Broths')) {
+                    brothId = item.id;
+                } else if (containerId.includes('Proteins')) {
+                    proteinId = item.id;
+                }
             } else {
                 this.querySelector('img').src = item.imageInactive;
+                if (containerId.includes('Broths')) {
+                    brothId = null;
+                } else if (containerId.includes('Proteins')) {
+                    proteinId = null;
+                }
             }
 
             console.log('Selected ID:', item.id);
