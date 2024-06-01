@@ -12,6 +12,9 @@ body {
   background-color: #EFEFEF;
   font-family: "Questrial", sans-serif;
   color: #333;
+}
+
+.container {
   max-width: 800px;
   margin: 10px auto;
   padding-inline: 1em;
@@ -34,36 +37,61 @@ body {
 .serviceTitle h1 {
   font-size: 1.8em;
   text-align: center;
+  margin-bottom: 2em;
 }
 
 .containerIngredients {
-  display: flex;
-  justify-content: space-between;
-  padding-block: 2em;
+  padding-block: 2em 1em;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto; 
 }
 
-.containerIngredients .item {
+.containerIngredients h2 {
+  font-size: 1.4em;
+}
+
+.containerIngredients .separator {
+  background-color: #FF5842;
+  width: 35%;
+  height: 5px;
+  border-radius: 5px;
+  margin-block: 0.5em 1em;
+}
+
+.ingredients {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 1em;
+}
+
+.ingredients .item {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding-inline: 1em;
+  padding: 0.5em 1em;
   gap: 10px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
-.containerIngredients .item h2 {
+.ingredients .item.active {
+  border: 2px solid #FF5842;
+  border-radius: 8px;
+}
+
+.ingredients .item h2 {
   font-size: 20px;
   text-align: center;
 }
 
-.containerIngredients .item img {
-  max-width: 100px;
+.ingredients .item img {
+  max-width: 80px;
   width: 100%;
 }
 
-.containerIngredients .item p {
+.ingredients .item p {
   font-size: 13px;
   text-align: center;
   margin-top: 15px;
@@ -71,7 +99,7 @@ body {
   color: #5E5E5E;
 }
 
-.containerIngredients .item h4 {
+.ingredients .item h4 {
   font-size: 1.4em;
 }
 
@@ -90,22 +118,26 @@ body {
 
   .serviceTitle h1 {
       font-size: 1.4em;
-      text-align: center;
+      margin-bottom: 0.6em;
   }
 
-  .containerIngredients .item {
+  .containerIngredients .separator {
+    width: 55%;
+  }
+
+  .ingredients .item {
     padding-inline: 10px;
   }
 
-  .containerIngredients .item h2 {
+  .ingredients .item h2 {
     font-size: 18px;
   }
 
-  .containerIngredients .item img {
-    width: 60px;
+  .ingredients .item img {
+    width: 50px;
   }
 
-  .containerIngredients .item p {
+  .ingredients .item p {
     font-size: 12px;
     margin-top: 8px;
     width: 100%;

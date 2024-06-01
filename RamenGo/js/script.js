@@ -43,7 +43,7 @@ fetchData('https://api.tech.redventures.com.br/proteins')
 // Renderização dos ingredientes
 function renderItems(items, containerId) {
     const container = document.querySelector(containerId);
-    let activeElement = null;  // Guarda o elemento atualmente ativo
+    let activeElement = null;
 
     items.forEach(item => {
         const element = document.createElement('div');
@@ -54,18 +54,16 @@ function renderItems(items, containerId) {
                              <h4>$${item.price}</h4>`;
 
         element.addEventListener('click', function() {
-            // Se há um elemento ativo e é diferente do atual, desative-o
             if (activeElement && activeElement !== this) {
                 activeElement.classList.remove('active');
-                activeElement.querySelector('img').src = activeElement.getAttribute('data-inactive');
+                activeElement.querySelector('img').src = activeElement.getAttribute('dataInactive');
             }
 
-            // Ativa ou desativa o elemento clicado
             this.classList.toggle('active');
             if (this.classList.contains('active')) {
                 this.querySelector('img').src = item.imageActive;
-                this.setAttribute('data-inactive', item.imageInactive);
-                activeElement = this;  // Atualiza o elemento ativo
+                this.setAttribute('dataInactive', item.imageInactive);
+                activeElement = this;
             } else {
                 this.querySelector('img').src = item.imageInactive;
             }
