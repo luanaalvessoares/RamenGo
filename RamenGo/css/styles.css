@@ -103,6 +103,10 @@ body {
   font-size: 1.4em;
 }
 
+.priceDisplay {
+  text-align: center;
+}
+
 @media (max-width: 576px) {
   body {
     margin: 10px;

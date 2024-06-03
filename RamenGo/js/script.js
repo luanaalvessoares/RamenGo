@@ -2,6 +2,9 @@ const broths = [];
 const proteins = [];
 let brothId;
 let proteinId;
+let brothPrice = 0;
+let proteinPrice = 0;
+let finalPrice = 0;
 
 // Requisições da API
 async function fetchData(url) {
@@ -41,8 +44,13 @@ fetchData('https://api.tech.redventures.com.br/proteins')
     })
     .catch(error => console.error('Não conseguimos obter os Proteins:', error));
 
+// Atualização do preço do pedido
+function updateFinalPrice() {
+    finalPrice = brothPrice + proteinPrice;
+    const priceDisplay = document.querySelector('.priceDisplay');
+    priceDisplay.textContent = `Total $${finalPrice.toFixed(2)}`;
+}
 
-// Renderização dos ingredientes
 // Renderização dos ingredientes
 function renderItems(items, containerId) {
     const container = document.querySelector(containerId);
@@ -60,6 +68,13 @@ function renderItems(items, containerId) {
             if (activeElement && activeElement !== this) {
                 activeElement.classList.remove('active');
                 activeElement.querySelector('img').src = activeElement.getAttribute('dataInactive');
+
+                if (containerId.includes('Broths')) {
+                    brothPrice = 0;
+                } else if (containerId.includes('Proteins')) {
+                    proteinPrice = 0;
+                }
+                updateFinalPrice();
             }
 
             this.classList.toggle('active');
@@ -67,22 +82,29 @@ function renderItems(items, containerId) {
                 this.querySelector('img').src = item.imageActive;
                 this.setAttribute('dataInactive', item.imageInactive);
                 activeElement = this;
-                // Atualiza diretamente a variável externa apropriada
+
                 if (containerId.includes('Broths')) {
                     brothId = item.id;
+                    brothPrice = item.price;
                 } else if (containerId.includes('Proteins')) {
                     proteinId = item.id;
+                    proteinPrice = item.price;
                 }
+
             } else {
                 this.querySelector('img').src = item.imageInactive;
                 if (containerId.includes('Broths')) {
                     brothId = null;
+                    brothPrice = 0;
                 } else if (containerId.includes('Proteins')) {
                     proteinId = null;
+                    proteinPrice = 0;
                 }
             }
 
-            console.log('Selected ID:', item.id);
+            updateFinalPrice();
+
+            console.log(finalPrice)
         });
 
         container.appendChild(element);
