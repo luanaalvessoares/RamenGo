@@ -103,8 +103,14 @@ body {
   font-size: 1.4em;
 }
 
-.priceDisplay {
+.price {
   text-align: center;
+  font-size: 22px;
+}
+
+.priceDisplay {
+  font-size: 30px;
+  margin-block: 6px 15px;
 }
 
 @media (max-width: 576px) {

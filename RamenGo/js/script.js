@@ -48,7 +48,7 @@ fetchData('https://api.tech.redventures.com.br/proteins')
 function updateFinalPrice() {
     finalPrice = brothPrice + proteinPrice;
     const priceDisplay = document.querySelector('.priceDisplay');
-    priceDisplay.textContent = `Total $${finalPrice.toFixed(2)}`;
+    priceDisplay.textContent = `$${finalPrice.toFixed(2)}`;
 }
 
 // Renderização dos ingredientes
