@@ -9,10 +9,23 @@ let container = document.querySelector('.container');
 let loading = document.querySelector('.loading');
 let reloadPage = document.querySelector('.reloadPage');
 
+
+async function loadAllImages(items) {
+    const promises = items.map(item => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = item.imageInactive;
+        });
+    });
+    await Promise.all(promises);
+}
+
+
 // Requisições da API
 async function fetchData(url, callback) {
     try {
-        loading.style.display = 'block';
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -26,6 +39,8 @@ async function fetchData(url, callback) {
         }
 
         const data = await response.json();
+        await loadAllImages(data);
+        callback(data);
         loading.style.display = 'none';
         container.style.display = 'block';
 
