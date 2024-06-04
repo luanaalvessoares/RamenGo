@@ -110,8 +110,14 @@ body {
 }
 
 .ingredients .item.active {
-  border: 2px solid #FF5842;
+  border: 2px solid #1820EF;
   border-radius: 8px;
+  background-color: #1820EF;
+  color: #FFF;
+}
+
+.ingredients .item.active p {
+  color: #FFF;
 }
 
 .ingredients .item h2 {
