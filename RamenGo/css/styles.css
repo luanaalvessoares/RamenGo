@@ -116,12 +116,13 @@ body {
 
 .sendOrder {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .btn {
-  margin-block: 1em 3em;
+  margin-top: 1em;
   padding-block: 15px;
   max-width: 320px;
   width: 100%;
@@ -131,6 +132,21 @@ body {
   background-color: #FF5842;
   color: #FFF;
   font-size: 20px;
+}
+
+.btn:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.sendOrder .message {
+  content: 'You need to choose both ingredients';
+  color: #FF5842;
+  font-size: 12px;
+  display: block;
+  margin-block: 5px 3em;
+  text-align: center;
 }
 
 @media (max-width: 576px) {
