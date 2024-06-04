@@ -144,6 +144,7 @@ async function submitOrder() {
 
     document.querySelector('.sendOrder .btn').style.display = 'none';
     document.querySelector('.price').style.display = 'none';
+    document.querySelector('.boxIngredients').style.pointerEvents = 'none';
 
     document.querySelector('.loadingOrder').style.display = 'block';
 
@@ -161,6 +162,7 @@ async function submitOrder() {
         const result = await response.json();
         console.log("Order sent successfully:", result);
 
+        document.querySelector('.boxIngredients').style.pointerEvents = 'none';
         document.querySelector('.loadingOrder').style.display = 'none';
 
         const successMessage = document.querySelector('.successMessage');
@@ -177,6 +179,7 @@ async function submitOrder() {
     } catch (error) {
         document.querySelector('.loadingOrder').style.display = 'none';
         document.querySelector('.orderErrorMessage').style.display = 'block';
+        document.querySelector('.boxIngredients').style.pointerEvents = 'none';
         console.error("Error sending the order:", error);
     }
 }

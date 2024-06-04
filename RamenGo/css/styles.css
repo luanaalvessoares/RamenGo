@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: #EFEFEF;
+  background-color: #FAFAED;
   font-family: "Questrial", sans-serif;
   color: #333;
   padding: 10px;
@@ -174,8 +174,8 @@ body {
 }
 
 .btn:disabled {
-  background-color: #ccc;
-  color: #666;
+  background-color: #DADADA;
+  color: #7A7A7A;
   cursor: not-allowed;
 }
 
