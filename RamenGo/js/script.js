@@ -104,6 +104,8 @@ function renderItems(items, containerId) {
 
             updateFinalPrice();
 
+            updateOrderButton();
+
             console.log(finalPrice)
         });
 
@@ -138,6 +140,7 @@ async function submitOrder() {
 
         const result = await response.json();
         console.log("Order sent successfully:", result);
+        alert('seu pedido foi enviado')
     } catch (error) {
         console.error("Error sending the order:", error);
     }
@@ -145,3 +148,18 @@ async function submitOrder() {
 
 const orderButton = document.querySelector('.btn');
 orderButton.addEventListener('click', submitOrder);
+
+// Verificar se os dois ingredientes foram selecionados
+function updateOrderButton() {
+    const orderButton = document.querySelector('.sendOrder .btn');
+    const message = document.querySelector('.sendOrder .message');
+    if (brothId && proteinId) {
+        orderButton.disabled = false;
+        message.style.visibility = 'hidden';
+    } else {
+        orderButton.disabled = true;
+        message.style.visibility = 'visible';
+    }
+}
+
+
