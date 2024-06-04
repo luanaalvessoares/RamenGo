@@ -48,7 +48,7 @@ fetchData('https://api.tech.redventures.com.br/proteins')
 function updateFinalPrice() {
     finalPrice = brothPrice + proteinPrice;
     const priceDisplay = document.querySelector('.priceDisplay');
-    priceDisplay.textContent = `$${finalPrice.toFixed(2)}`;
+    priceDisplay.innerHTML = `$${finalPrice.toFixed(2)}`;
 }
 
 // Renderização dos ingredientes
@@ -110,3 +110,38 @@ function renderItems(items, containerId) {
         container.appendChild(element);
     });
 }
+
+
+// Envio do pedido
+async function submitOrder() {
+    const url = 'https://api.tech.redventures.com.br/orders';
+    const headers = {
+        'Content-Type': 'application/json',
+        'x-api-key': 'ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf'
+    };
+
+    const body = JSON.stringify({
+        brothId: brothId,
+        proteinId: proteinId
+    });
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: headers,
+            body: body
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log("Order sent successfully:", result);
+    } catch (error) {
+        console.error("Error sending the order:", error);
+    }
+}
+
+const orderButton = document.querySelector('.btn');
+orderButton.addEventListener('click', submitOrder);
