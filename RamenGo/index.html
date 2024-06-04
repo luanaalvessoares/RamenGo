@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="display: none;">
         <div class="logo">
             <img src="assets/images/logo.webp" alt="logo"/>
         </div>
@@ -44,7 +44,18 @@
         </div>
 
         <div class="successMessage"></div>
+    </div>
 
+    <div class="loading" style="display: none;">
+        <div class="dots">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+    </div>
+
+    <div class="reloadPage" style="display: none;">
+        <h3>Oops... we had a little problem loading the ingredients, please reload the page :(</h3>
     </div>
 
     <script src="js/script.js"></script>

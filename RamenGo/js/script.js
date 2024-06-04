@@ -5,10 +5,14 @@ let proteinId;
 let brothPrice = 0;
 let proteinPrice = 0;
 let finalPrice = 0;
+let container = document.querySelector('.container');
+let loading = document.querySelector('.loading');
+let reloadPage = document.querySelector('.reloadPage');
 
 // Requisições da API
-async function fetchData(url) {
+async function fetchData(url, callback) {
     try {
+        loading.style.display = 'block';
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -22,27 +26,24 @@ async function fetchData(url) {
         }
 
         const data = await response.json();
-        return data;
+        loading.style.display = 'none';
+        container.style.display = 'block';
+
     } catch (error) {
-    console.error('Erro ao fazer a requisição:', error);
+        console.error('Erro ao fazer a requisição:', error);
+        reloadPage.style.display = 'block';
     }
 }
 
-fetchData('https://api.tech.redventures.com.br/broths')
-    .then(data => {
-        broths.push(...data);
-        renderItems(broths, '.containerBroths', brothId);
-        console.log('Lista de Broths:', broths);
-    })
-    .catch(error => console.error('Não conseguimos obter os Broths:', error));
+fetchData('https://api.tech.redventures.com.br/broths', data => {
+    broths.push(...data);
+    renderItems(broths, '.containerBroths', brothId);
+});
 
-fetchData('https://api.tech.redventures.com.br/proteins')
-    .then(data => {
-        proteins.push(...data);
-        renderItems(proteins, '.containerProteins', proteinId);
-        console.log('Lista de Proteins:', proteins);
-    })
-    .catch(error => console.error('Não conseguimos obter os Proteins:', error));
+fetchData('https://api.tech.redventures.com.br/proteins', data => {
+    proteins.push(...data);
+    renderItems(proteins, '.containerProteins', proteinId);
+});
 
 // Atualização do preço do pedido
 function updateFinalPrice() {
@@ -112,7 +113,6 @@ function renderItems(items, containerId) {
         container.appendChild(element);
     });
 }
-
 
 // Envio do pedido
 async function submitOrder() {
@@ -187,5 +187,3 @@ function updateOrderButton() {
         message.style.visibility = 'visible';
     }
 }
-
-
