@@ -140,7 +140,20 @@ async function submitOrder() {
 
         const result = await response.json();
         console.log("Order sent successfully:", result);
-        alert('seu pedido foi enviado')
+
+        document.querySelector('.sendOrder .btn').style.display = 'none';
+        document.querySelector('.price').style.display = 'none';
+        const successMessage = document.querySelector('.successMessage');
+        successMessage.innerHTML = `<h2>Your order has been sent :)</h2>
+                                     <a href="#" class="newOrder">Place a new order</a>`;
+        document.querySelector('.sendOrder').appendChild(successMessage);
+
+        document.querySelector('.newOrder').addEventListener('click', function() {
+            window.location.reload();
+        });
+        
+        resetOrder();
+        
     } catch (error) {
         console.error("Error sending the order:", error);
     }
@@ -148,6 +161,19 @@ async function submitOrder() {
 
 const orderButton = document.querySelector('.btn');
 orderButton.addEventListener('click', submitOrder);
+
+// Resetar valores para novos pedidos
+function resetOrder() {
+    document.querySelectorAll('.item.active').forEach(item => {
+        item.classList.remove('active');
+        item.querySelector('img').src = item.getAttribute('dataInactive');
+    });
+    brothId = null;
+    proteinId = null;
+    brothPrice = 0;
+    proteinPrice = 0;
+    updateFinalPrice();
+}
 
 // Verificar se os dois ingredientes foram selecionados
 function updateOrderButton() {
