@@ -9,20 +9,6 @@ let container = document.querySelector('.container');
 let loading = document.querySelector('.loading');
 let reloadPage = document.querySelector('.reloadPage');
 
-
-async function loadAllImages(items) {
-    const promises = items.map(item => {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.onload = resolve;
-            img.onerror = reject;
-            img.src = item.imageInactive;
-        });
-    });
-    await Promise.all(promises);
-}
-
-
 // Requisições da API
 async function fetchData(url, callback) {
     try {
@@ -59,6 +45,19 @@ fetchData('https://api.tech.redventures.com.br/proteins', data => {
     proteins.push(...data);
     renderItems(proteins, '.containerProteins', proteinId);
 });
+
+// Função para garantia de carregamento das imagens
+async function loadAllImages(items) {
+    const promises = items.map(item => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = item.imageInactive;
+        });
+    });
+    await Promise.all(promises);
+}
 
 // Atualização do preço do pedido
 function updateFinalPrice() {
@@ -142,6 +141,11 @@ async function submitOrder() {
         proteinId: proteinId
     });
 
+    document.querySelector('.sendOrder .btn').style.display = 'none';
+    document.querySelector('.price').style.display = 'none';
+
+    document.querySelector('.loadingOrder').style.display = 'block';
+
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -156,8 +160,8 @@ async function submitOrder() {
         const result = await response.json();
         console.log("Order sent successfully:", result);
 
-        document.querySelector('.sendOrder .btn').style.display = 'none';
-        document.querySelector('.price').style.display = 'none';
+        document.querySelector('.loadingOrder').style.display = 'none';
+
         const successMessage = document.querySelector('.successMessage');
         successMessage.innerHTML = `<h2>Your order has been sent :)</h2>
                                      <a href="#" class="newOrder">Place a new order</a>`;
@@ -170,6 +174,8 @@ async function submitOrder() {
         resetOrder();
         
     } catch (error) {
+        document.querySelector('.loadingOrder').style.display = 'none';
+        document.querySelector('.orderErrorMessage').style.display = 'block';
         console.error("Error sending the order:", error);
     }
 }
