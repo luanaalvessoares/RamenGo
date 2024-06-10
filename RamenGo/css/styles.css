@@ -19,6 +19,21 @@ body {
   min-height: 100vh;
 }
 
+.textMedium {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+}
+
+.textExtrabold {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 800;
+}
+
+.textBlack {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 900;
+}
+
 .container {
   width: 100vw;
   padding: 0 2em 3em;
