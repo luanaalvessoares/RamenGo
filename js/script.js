@@ -92,7 +92,7 @@ async function loadAllImages(items) {
 function updateFinalPrice() {
     finalPrice = brothPrice + proteinPrice;
     const priceDisplay = document.querySelector('.priceDisplay');
-    priceDisplay.innerHTML = `$${finalPrice.toFixed(2)}`;
+    priceDisplay.innerHTML = `US$ ${finalPrice.toFixed(2)}`;
 }
 
 // Renderização dos ingredientes

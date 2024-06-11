@@ -353,11 +353,13 @@ body {
 
 .price {
   text-align: center;
-  font-size: 22px;
+  font-size: var(--fontMiddle);
+  font-weight: var(--textMedium);
 }
 
 .priceDisplay {
-  font-size: 30px;
+  color: var(--thirdColor);
+  font-size: var(--fontTitle);
   margin-block: 6px 15px;
 }
 
@@ -369,23 +371,34 @@ body {
 }
 
 .btn {
+  background-color: var(--secondColor);
+  padding: 20px 15px;
   margin-top: 1em;
-  padding-block: 15px;
-  max-width: 320px;
-  width: 100%;
-  box-shadow: 0px 0px 5px 0px #BBB;
-  border: 0;
-  border-radius: 6px;
-  background-color: var(--thirdColor);
-  color: #FFF;
-  font-size: 20px;
-  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  color: var(--fifthColor);
+  font-size: var(--fontSmall);
+  font-weight: var(--textExtraBold);
+  letter-spacing: 2px;
+}
+
+.btn span {
+  padding-left: 3.8em;
+  vertical-align: middle;
+  transition: padding-left 0.3s ease;
+}
+
+.btn:hover span {
+  padding-left: 4.5em;
 }
 
 .btn:disabled {
-  background-color: #DADADA;
-  color: #7A7A7A;
+  background-color: #C5C5C5;
+  color: var(--fifthColor);
   cursor: not-allowed;
+  img {
+    filter: grayscale(100%) sepia(15%) brightness(125%) saturate(150%);
+  }
 }
 
 .sendOrder .message {
