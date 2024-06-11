@@ -60,7 +60,7 @@ async function fetchData(url, callback) {
 
     } catch (error) {
         console.error('Erro ao fazer a requisição:', error);
-        reloadPage.style.display = 'block';
+        reloadPage.style.display = 'flex';
         loading.style.display = 'none';
     }
 }

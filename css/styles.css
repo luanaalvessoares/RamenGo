@@ -11,6 +11,7 @@
   --fontTitle: 1.7em;
   --fontMiddle: 1.2em;
   --fontHighlight: 3em;
+  --fontOrder: 2.4em;
   --fontDefault: 16px;
   --fontSmall: 14px;
   --fontTiny: 12px;
@@ -259,6 +260,8 @@ body {
 /* FIM PRIMEIRA SEÇÃO */
 
 
+
+/* SEGUNDA SEÇÃO */
 .containerMenu {
   padding: 0 2em 3em;
 }
@@ -383,13 +386,13 @@ body {
 }
 
 .btn span {
-  padding-left: 3.8em;
+  padding-left: 1em;
   vertical-align: middle;
   transition: padding-left 0.3s ease;
 }
 
 .btn:hover span {
-  padding-left: 4.5em;
+  padding-left: 1.5em;
 }
 
 .btn:disabled {
@@ -408,20 +411,6 @@ body {
   display: block;
   margin-top: 5px;
   text-align: center;
-}
-
-.successMessage {
-  text-align: center;
-}
-
-.successMessage h2 {
-  font-size: 24px;
-  color: var(--secondColor);
-  margin-bottom: 6px;
-}
-
-.newOrder {
-  color: #333;
 }
 
 .orderErrorMessage {
@@ -483,6 +472,15 @@ body {
   }
 }
 /* loading */
+
+.reloadPage {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  padding-inline: 1em;
+}
 
 @media (min-width: 1200px) {
   .ingredients .item {
@@ -613,3 +611,101 @@ body {
     line-height: 1;
   }
 }
+/* SEGUNDA SEÇÃO */
+
+/* PEDIDO ENVIADO */
+.orderSuccess {
+  background-color: var(--fifthColor);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.orderSuccess .orderSucessItem {
+  padding: 2em;
+}
+
+.orderSuccess .orderSucessItem:first-child {
+  background-image: url('/assets/images/patternAzul.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.orderSuccess .orderSucessItem:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1em;
+}
+
+.orderSuccess .orderSucessItem:last-child .thankingImage img {
+  max-width: 80px;
+  width: 100%;
+}
+
+.orderSuccess .orderSucessItem:last-child h4 {
+  color: var(--fourthColor);
+  font-size: var(--fontTitle);
+  font-weight: var(--textExtraBold);
+}
+
+.orderSuccess .orderSucessItem:last-child h2 {
+  color: var(--thirdColor);
+  font-size: var(--fontOrder);
+  font-weight: var(--textBlack);
+  line-height: 1.2;
+}
+
+.orderSuccess .orderSucessItem:last-child p {
+  color: var(--firstColor);
+  font-size: var(--fontMiddle);
+  font-weight: var(--textMedium);
+  margin-bottom: 2em;
+}
+
+.orderSuccess .orderSucessItem:last-child .newOrder a {
+  background-color: var(--secondColor);
+  padding: 20px 15px;
+  border-radius: 50px;
+  color: var(--fifthColor);
+  font-size: var(--fontSmall);
+  font-weight: var(--textExtraBold);
+  letter-spacing: 2px;
+}
+
+.orderSuccess .orderSucessItem:last-child .newOrder a span {
+  padding-left: 1em;
+  vertical-align: middle;
+  transition: padding-left 0.3s ease;
+}
+
+.orderSuccess .orderSucessItem:last-child .newOrder a:hover span {
+  padding-left: 1.5em;
+}
+
+@media (max-width: 991px) {
+  .orderSuccess {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  
+}
+
+@media (max-width: 767px) {
+  .orderSuccess .orderSucessItem:last-child h2 {
+    font-size: var(--fontTitle);
+  }
+
+  .orderSuccess .orderSucessItem:last-child h4 {
+    font-size: var(--fontMiddle);
+  }
+
+  .orderSuccess .orderSucessItem:last-child p {
+    margin-bottom: 1.5em;
+  }
+}
+/* PEDIDO ENVIADO */
