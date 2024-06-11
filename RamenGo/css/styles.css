@@ -1,3 +1,24 @@
+:root {
+  --firstColor: #000000;
+  --secondColor: #1820EF;
+  --thirdColor: #FF4E42;
+  --fourthColor: #FFC024;
+  --fifthColor: #FAFAED;
+  --textNormal: 400;
+  --textMedium: 500;
+  --textExtraBold: 800;
+  --textBlack: 900;
+  --fontTitle: 1.7em;
+  --fontHighlight: 3em;
+  --fontDefinitions: ;
+  --fontDefault: 16px;
+  --fontSmall: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,37 +29,238 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
-  background-color: #FFFCF7;
-  font-family: "Questrial", sans-serif;
-  color: #333;
-  padding: 10px;
+  background-color: var(--fifthColor);
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+/* HEADER */
+.header {
+  background-image: url("/RamenGo/assets/images/patternVermelha.webp");
+  background-size: contain;
+  height: 100vh;
+}
+
+.flexHeader {
+  width: 100%;
+  height: 100%;
+  padding: 3em;
+}
+
+.flexHeader .child:nth-child(1) img {
+  max-width: 180px;
+  width: 100%;
+}
+
+.flexHeader .child:nth-child(2) {
+  position: relative;
+  text-align: start;
+}
+
+.flexHeader .child:nth-child(2) .headerContent:first-child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-65%, -40%);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  min-height: 100vh;
+  align-items: flex-start;
+  gap: 0.8em;
 }
 
-.textMedium {
-  font-family: "M PLUS Rounded 1c", sans-serif;
-  font-weight: 500;
+.flexHeader .child:nth-child(2) .headerContent:first-child div {
+  display: flex;
+  align-items: end;
+  gap: 10px;
 }
 
-.textExtrabold {
-  font-family: "M PLUS Rounded 1c", sans-serif;
-  font-weight: 800;
+.flexHeader .child:nth-child(2) .headerContent:first-child div p {
+  color: var(--fourthColor);
+  font-size: var(--fontHighlight);
+  font-weight: var(--textBlack);
+  line-height: 1.2;
+  text-align: center;
 }
 
-.textBlack {
-  font-family: "M PLUS Rounded 1c", sans-serif;
-  font-weight: 900;
+.flexHeader .child:nth-child(2) .headerContent:first-child div section:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-.container {
+.flexHeader .child:nth-child(2) .headerContent:first-child div h3 {
+  color: var(--fifthColor);
+  font-weight: var(--textBlack);
+  font-size: 140px;
+  line-height: 0.8;
+}
+
+.flexHeader .child:nth-child(2) .headerContent:first-child > p {
+  width: 30%;
+  color: var(--fifthColor);
+  font-size: var(--fontDefault);
+  font-weight: var(--textNormal);
+  text-align: start;
+}
+
+.flexHeader .child:nth-child(2) .headerContent:first-child > a {
+  background-color: var(--secondColor);
+  padding: 20px 15px;
+  margin-block: 1em;
+  border-radius: 50px;
+  color: var(--fifthColor);
+  font-size: var(--fontSmall);
+  font-weight: var(--textExtraBold);
+  letter-spacing: 2px;
+}
+
+.flexHeader .child:nth-child(2) .headerContent:first-child > a span {
+  padding-left: 3.8em;
+  vertical-align: middle;
+  transition: padding-left 0.3s ease;
+}
+
+.flexHeader .child:nth-child(2) .headerContent:first-child > a:hover span {
+  padding-left: 4.5em;
+}
+
+.flexHeader .child:nth-child(2) .headerContent:last-child {
+  background-image: url('/RamenGo/assets/images/headerBackground.webp');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+
+.flexHeader .child:nth-child(2) .headerContent:last-child div:nth-child(1) {
+  align-self: flex-start;
+  > img {
+    max-width: 120px;
+    width: 100%;
+  }
+}
+
+.flexHeader .child:nth-child(2) .headerContent:last-child div:nth-child(2) {
+  align-self: center;
+  > img {
+    max-width: 450px;
+    width: 100%;
+  }
+}
+
+.flexHeader .child:nth-child(2) .headerContent:last-child div:nth-child(3) {
+  align-self: center;
+  > img {
+    max-width: 120px;
+    width: 100%;
+  }
+}
+
+.orderArrow {
+  max-width: 20px;
+  width: 100%;
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .flexHeader .child:nth-child(2) .headerContent:first-child {
+    left: 30%;
+    top: 50%;
+    transform: translate(-35%, -40%);
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .flexHeader .child:nth-child(2) .headerContent:first-child {
+    left: 0;
+    bottom: 10%;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    background-size: cover;
+  }
+
+  .flexHeader {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+  }
+
+  .flexHeader .child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .flexHeader .child:last-child {
+    height: 100vh;
+  }
+
+  .flexHeader .child:nth-child(1) img {
+    width: 120px;
+    padding-bottom: 1em;
+  }
+
+  .flexHeader .child:nth-child(2) .headerContent:first-child {
+    position: static;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 2;
+  }
+
+  .flexHeader .child:nth-child(2) .headerContent:last-child {
+    padding: 1em;
+  }
+
+  .flexHeader .child:nth-child(2) .headerContent:first-child div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flexHeader .child:nth-child(2) .headerContent:first-child div section:first-child {
+    display: flex;
+    flex-direction: row!important;
+    gap: 10px;
+  }
+
+  .flexHeader .child:nth-child(2) .headerContent:first-child div section:first-child p:nth-child(2) {
+    transform: rotate(-90deg);
+    margin-inline: 10px;
+  }
+
+  .flexHeader .child:nth-child(2) .headerContent:first-child div h3 {
+    font-size: 120px;
+  }
+
+  .flexHeader .child:nth-child(2) .headerContent:first-child > p {
+    width: 100%;
+    text-align: center;
+    margin-top: 1em;
+  }
+
+  .flexHeader .child:nth-child(2) .headerContent:first-child > a {
+    display: none;
+  }
+}
+
+
+.containerMenu {
   width: 100vw;
+  min-height: 100vh;
   padding: 0 2em 3em;
-  box-shadow: 0px 0px 5px 0px #BBB;
-  border-radius: 15px;
 }
 
 .contentLogo {
@@ -221,7 +443,7 @@ body {
   text-align: center;
   font-size: 20px;
   color: #FF5842;
-}
+} */
 
 /* loading */
 .loading {
@@ -230,11 +452,18 @@ body {
 
 .dots {
   width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
+}
+
+.loading .dots {
+  height: 100vh;
+}
+
+.loadingOrder .dots {
+  height: 100%;
 }
 
 .dot {
@@ -290,10 +519,6 @@ body {
 }
 
 @media (max-width: 576px) {
-  body {
-    margin: 10px;
-  }
-
   .contentLogo {
     display: flex;
     flex-direction: column;

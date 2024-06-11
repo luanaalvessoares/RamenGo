@@ -8,63 +8,100 @@
     <!-- Fonte -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="container" style="display: none;">
-        <div class="contentLogo">
-            <div class="logo">
-                <img src="assets/images/logo.webp" alt="logo"/>
+        <section class="header">
+            <div class="flexHeader">
+                <div class="child">
+                    <img src="/RamenGo/assets/images/logo.webp" alt="logo" />
+                </div>
+
+                <div class="child">
+                    <div class="headerContent">
+                        <div>
+                            <section>
+                                <p>ラ</p>
+                                <p>l</p>
+                                <p>メ</p>
+                                <p>ン</p>
+                            </section>
+
+                            <section>
+                                <h3>GO!</h3>
+                            </section>
+                        </div>
+
+                        <p>Enjoy a good ramen in the comfort of your house. Create your own ramen and choose your favorite flavour combination!</p>
+
+                        <a class="scrollToMenu" href="#">
+                            ORDER NOW
+                            <span><img class="orderArrow" src="/RamenGo/assets/images/orderArrow.svg" /></span>
+                        </a>
+                    </div>
+
+                    <div class="headerContent">
+                        <div>
+                            <img src="/RamenGo/assets/images/balaoAzul.webp" />
+                        </div>
+                        
+                        <div>
+                            <img src="/RamenGo/assets/images/entregadora.webp" />
+                        </div>
+
+                        <div>
+                            <img src="/RamenGo/assets/images/balaoAmarelo.webp" />
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="serviceTitle">
-                <h1>Build your Ramen</h1>
-            </div>       
-        </div>
-
-
-        <div class="containerContent">
-            <div class="boxIngredients">
-                <div class="containerIngredients">
-                    <h2 class="chooseIngredientsTitle">Choose your Broth:</h2>
-                    <div class="separator"></div>
-                    <div class="ingredients containerBroths"></div>
-                </div>
-                    
-                <div class="containerIngredients">
-                    <h2 class="chooseIngredientsTitle">Choose your Protein:</h2>
-                    <div class="separator"></div>
-                    <div class="ingredients containerProteins"></div>
-                </div>
-            </div>
-
-            <div>
-                <div class="price">
-                    Total: <h3 class="priceDisplay">$0.00</h3>
-                </div>
-
-                <div class="sendOrder">
-                    <button type="submit" class="btn" disabled>Submit your order</button>
-                    <p class="message">You need to choose both ingredients</p>
-                </div>
-
-                <div class="loadingOrder" style="display: none;">
-                    <div class="dots">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
+        <section id="menuSection" class="containerMenu">
+            <div class="containerContent">
+                <div class="boxIngredients">
+                    <div class="containerIngredients">
+                        <h2 class="chooseIngredientsTitle">Choose your Broth:</h2>
+                        <div class="separator"></div>
+                        <div class="ingredients containerBroths"></div>
+                    </div>
+                        
+                    <div class="containerIngredients">
+                        <h2 class="chooseIngredientsTitle">Choose your Protein:</h2>
+                        <div class="separator"></div>
+                        <div class="ingredients containerProteins"></div>
                     </div>
                 </div>
 
-                <div class="orderErrorMessage" style="display: none;">There was an error loading the ingredients, please reload the page and try again :(</div>
+                <div>
+                    <div class="price">
+                        Total: <h3 class="priceDisplay">$0.00</h3>
+                    </div>
 
-                <div class="successMessage"></div>
+                    <div class="sendOrder">
+                        <button type="submit" class="btn" disabled>Submit your order</button>
+                        <p class="message">You need to choose both ingredients</p>
+                    </div>
+
+                    <div class="loadingOrder" style="display: none;">
+                        <div class="dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        </div>
+                    </div>
+
+                    <div class="orderErrorMessage" style="display: none;">There was an error loading the ingredients, please reload the page and try again :(</div>
+
+                    <div class="successMessage"></div>
+                </div>
             </div>
-        </div>
-
+        </section>
     </div>
+
 
     <div class="loading">
         <div class="dots">
