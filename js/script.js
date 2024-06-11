@@ -103,10 +103,10 @@ function renderItems(items, containerId) {
     items.forEach(item => {
         const element = document.createElement('div');
         element.className = 'item';
-        element.innerHTML = `<h2>${item.name}</h2>
-                             <img src="${item.imageInactive}" alt="${item.name}" />
+        element.innerHTML = `<img src="${item.imageInactive}" alt="${item.name}" />
+                             <h2>${item.name}</h2>
                              <p>${item.description}</p>
-                             <h4>$${item.price}</h4>`;
+                             <h4>US$ ${item.price}</h4>`;
 
         element.addEventListener('click', function() {
             if (activeElement && activeElement !== this) {
