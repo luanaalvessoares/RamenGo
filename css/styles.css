@@ -38,7 +38,7 @@ body {
   font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
-/* HEADER */
+/* PRIMEIRA SEÇÃO */
 .header {
   background-image: url("/assets/images/patternVermelha.webp");
   background-size: contain;
@@ -208,7 +208,7 @@ body {
 
   .flexHeader .child:nth-child(1) img {
     width: 120px;
-    padding-bottom: 1em;
+    padding-bottom: 10px;
   }
 
   .flexHeader .child:nth-child(2) .headerContent:first-child {
@@ -221,7 +221,7 @@ body {
   }
 
   .flexHeader .child:nth-child(2) .headerContent:last-child {
-    padding: 1em;
+    padding-inline: 1em;
   }
 
   .flexHeader .child:nth-child(2) .headerContent:first-child div {
@@ -248,18 +248,17 @@ body {
   .flexHeader .child:nth-child(2) .headerContent:first-child > p {
     width: 100%;
     text-align: center;
-    margin-top: 1em;
+    margin-top: 10px;
   }
 
   .flexHeader .child:nth-child(2) .headerContent:first-child > a {
     display: none;
   }
 }
+/* FIM PRIMEIRA SEÇÃO */
 
 
 .containerMenu {
-  width: 100vw;
-  min-height: 100vh;
   padding: 0 2em 3em;
 }
 
