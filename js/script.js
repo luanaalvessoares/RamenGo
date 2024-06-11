@@ -89,9 +89,9 @@ async function loadAllImages(items) {
 }
 
 // Atualização do preço do pedido
-function updateFinalPrice() {
+function updateFinalPrice(containerPrice) {
     finalPrice = brothPrice + proteinPrice;
-    const priceDisplay = document.querySelector('.priceDisplay');
+    const priceDisplay = document.querySelector(containerPrice);
     priceDisplay.innerHTML = `US$ ${finalPrice.toFixed(2)}`;
 }
 
@@ -118,7 +118,7 @@ function renderItems(items, containerId) {
                 } else if (containerId.includes('Proteins')) {
                     proteinPrice = 0;
                 }
-                updateFinalPrice();
+                updateFinalPrice('.priceDisplay');
             }
 
             this.classList.toggle('active');
@@ -146,7 +146,7 @@ function renderItems(items, containerId) {
                 }
             }
 
-            updateFinalPrice();
+            updateFinalPrice('.priceDisplay');
 
             updateOrderButton();
 
@@ -190,30 +190,49 @@ async function submitOrder() {
         const result = await response.json();
         console.log("Order sent successfully:", result);
 
-        document.querySelector('.boxIngredients').style.pointerEvents = 'none';
-        document.querySelector('.loadingOrder').style.display = 'none';
 
-        const successMessage = document.querySelector('.successMessage');
-        successMessage.innerHTML = `<h2>Your order has been sent :)</h2>
-                                     <a href="#" class="newOrder">Place a new order</a>`;
-        document.querySelector('.sendOrder').appendChild(successMessage);
+        const selectedProtein = proteins.find(p => p.id === proteinId);
+        const selectedBroth = broths.find(b => b.id === brothId);
+
+        const dishName = `${selectedBroth.name} and ${selectedProtein.name} Ramen`;
+        const imagePath = getImagePath(selectedProtein.name);
+
+        let orderSentDiv = document.getElementById('orderSent');
+        orderSentDiv.insertAdjacentHTML('beforeend', `<img src="${imagePath}" alt="${dishName}" />
+                                                       <p class="orderDescription">Your Order:</p>
+                                                       <h2>${dishName}</h2>
+                                                       <p class="orderFinalPrice">US$ ${finalPrice.toFixed(2)}</p>`);        
+
+        document.querySelector('.orderSuccess').style.display = 'grid';
+        document.querySelector('.container').style.display = 'none';
+        document.querySelector('.orderSuccess').scrollIntoView({
+            behavior: 'smooth'
+        });
 
         document.querySelector('.newOrder').addEventListener('click', function() {
             window.location.reload();
         });
         
-        resetOrder();
-        
     } catch (error) {
-        document.querySelector('.loadingOrder').style.display = 'none';
-        document.querySelector('.orderErrorMessage').style.display = 'block';
-        document.querySelector('.boxIngredients').style.pointerEvents = 'none';
         console.error("Error sending the order:", error);
     }
 }
 
 const orderButton = document.querySelector('.btn');
 orderButton.addEventListener('click', submitOrder);
+
+// Obter o caminho da imagem da escolha do ramen
+function getImagePath(proteinName) {
+    switch (proteinName) {
+        case 'Chasu': return '/assets/images/chasu.webp';
+        case 'Yasai Vegetarian': return '/assets/images/yasaiVegetable.webp';
+        case 'Karaague': return '/assets/images/karaague.webp';
+    }
+}
+
+document.querySelector('.orderSuccess').scrollIntoView({
+    behavior: 'smooth'
+});
 
 // Resetar valores para novos pedidos
 function resetOrder() {
@@ -225,7 +244,7 @@ function resetOrder() {
     proteinId = null;
     brothPrice = 0;
     proteinPrice = 0;
-    updateFinalPrice();
+    updateFinalPrice('.priceDisplay');
 }
 
 // Verificar se os dois ingredientes foram selecionados

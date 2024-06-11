@@ -424,6 +424,10 @@ body {
   width: 100%;
 }
 
+.loadingOrder {
+  height: 100px;
+}
+
 .dots {
   width: 100%;
   display: flex;
@@ -434,10 +438,6 @@ body {
 
 .loading .dots {
   height: 100vh;
-}
-
-.loadingOrder .dots {
-  height: 100%;
 }
 
 .dot {
@@ -625,19 +625,49 @@ body {
   padding: 2em;
 }
 
-.orderSuccess .orderSucessItem:first-child {
-  background-image: url('/assets/images/patternAzul.webp');
-  background-size: cover;
-  background-position: center;
-}
-
-.orderSuccess .orderSucessItem:last-child {
+.orderSuccess .orderSucessItem {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   gap: 1em;
+}
+
+.orderSuccess .orderSucessItem:first-child {
+  background-image: url('/assets/images/patternAzul.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.orderSuccess .orderSucessItem:first-child .orderLogo {
+  max-width: 130px;
+  width: 100%;
+  align-self: flex-start;
+}
+
+.orderSuccess .orderSucessItem:first-child img {
+  max-width: 450px;
+  width: 100%;
+}
+
+.orderSuccess .orderSucessItem:first-child .orderDescription {
+  color: var(--fifthColor);
+  font-size: var(--fontTitle);
+  font-weight: var(--textExtraBold);
+}
+
+.orderSuccess .orderSucessItem:first-child h2 {
+  color: var(--fourthColor);
+  font-size: var(--fontOrder);
+  font-weight: var(--textBlack);
+  line-height: 1.2;
+}
+
+.orderSuccess .orderSucessItem:first-child .orderFinalPrice {
+  color: var(--thirdColor);
+  font-size: var(--fontTitle);
+  font-weight: var(--textExtraBold);
 }
 
 .orderSuccess .orderSucessItem:last-child .thankingImage img {
@@ -691,11 +721,12 @@ body {
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  
-}
-
 @media (max-width: 767px) {
+  .orderSuccess .orderSucessItem:first-child h2,
+  .orderSuccess .orderSucessItem:first-child .orderDescription {
+    font-size: var(--fontTitle);
+  }
+
   .orderSuccess .orderSucessItem:last-child h2 {
     font-size: var(--fontTitle);
   }
