@@ -9,6 +9,32 @@ let container = document.querySelector('.container');
 let loading = document.querySelector('.loading');
 let reloadPage = document.querySelector('.reloadPage');
 
+// Carregamento de todos os elementos da página
+function waitForBackgroundImages() {
+    return new Promise((resolve) => {
+        const checkInterval = setInterval(() => {
+            const allElements = document.querySelectorAll('*');
+            let allLoaded = true;
+            for (let el of allElements) {
+                const style = window.getComputedStyle(el);
+                if (style.backgroundImage !== 'none') {
+                    const bgImage = style.backgroundImage.match(/url\("?(.+?)"?\)/)[1];
+                    const img = new Image();
+                    img.src = bgImage;
+                    if (!img.complete) {
+                        allLoaded = false;
+                        break;
+                    }
+                }
+            }
+            if (allLoaded) {
+                clearInterval(checkInterval);
+                resolve();
+            }
+        }, 100);
+    });
+}
+
 // Requisições da API
 async function fetchData(url, callback) {
     try {
@@ -26,7 +52,9 @@ async function fetchData(url, callback) {
 
         const data = await response.json();
         await loadAllImages(data);
+        await waitForBackgroundImages();
         callback(data);
+
         loading.style.display = 'none';
         container.style.display = 'block';
 
@@ -212,3 +240,11 @@ function updateOrderButton() {
         message.style.visibility = 'visible';
     }
 }
+
+// Rolagem para a seção dos ingredientes
+document.querySelector('.scrollToMenu').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('menuSection').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
