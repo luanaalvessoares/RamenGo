@@ -52,7 +52,7 @@ async function fetchData(url, callback) {
 
         const data = await response.json();
         await loadAllImages(data);
-        await waitForBackgroundImages();
+        // await waitForBackgroundImages();
         callback(data);
 
         loading.style.display = 'none';
