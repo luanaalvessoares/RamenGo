@@ -740,3 +740,57 @@ body {
   }
 }
 /* PEDIDO ENVIADO */
+
+
+
+/* TESTE CARROSSEL DE INGREDIENTES */
+@media (max-width: 576px) {
+  .ingredients {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    gap: 20px;
+  }
+
+  .ingredients::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ingredients .item {
+    scroll-snap-align: center;
+    flex: 0 0 auto;
+    width: 90%;
+    margin-block: 0.8em 2em;
+  }
+
+  .indicators {
+    text-align: center;
+  }
+
+  .indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+    border-radius: 50%;
+    margin: 5px;
+  }
+
+  .indicator.active {
+    background-color: black;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 576px) {
+  .ingredients .item {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 449px) {
+  .ingredients .item {
+    width: 80%!important;
+    max-width: 420px;
+  }
+}

@@ -267,3 +267,20 @@ document.querySelector('.scrollToMenu').addEventListener('click', function(event
         behavior: 'smooth'
     });
 });
+
+
+// teste carrossel dos ingredientes mobile
+document.querySelectorAll('.scroll-container').forEach(container => {
+    container.addEventListener('scroll', function() {
+        const scrollPosition = this.scrollLeft;
+        const itemWidth = this.querySelector('.item').offsetWidth;
+        const index = Math.floor(scrollPosition / itemWidth);
+
+        const indicators = this.parentNode.querySelector('.indicators').children;
+        Array.from(indicators).forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === index);
+        });
+    });
+});
+
+  
