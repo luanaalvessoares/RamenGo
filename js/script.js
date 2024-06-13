@@ -53,7 +53,7 @@ async function fetchData(url, callback) {
 
         const data = await response.json();
         await loadAllImages(data);
-        // await waitForBackgroundImages();
+        await waitForBackgroundImages();
         callback(data);
 
         loading.style.display = 'none';
@@ -260,6 +260,14 @@ function updateOrderButton() {
         message.style.visibility = 'visible';
     }
 }
+
+// Rolagem para a seção dos ingredientes
+document.querySelector('.scrollToMenu').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('menuSection').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
 
 
 // teste carrossel dos ingredientes mobile
