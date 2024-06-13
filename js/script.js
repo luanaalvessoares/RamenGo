@@ -201,7 +201,7 @@ async function submitOrder() {
         await loadImage(imagePath);
 
         let orderSentDiv = document.getElementById('orderSent');
-        orderSentDiv.insertAdjacentHTML('beforeend', `<img src="${imagePath}" alt="${dishName}" />
+        orderSentDiv.insertAdjacentHTML('beforeend', `<img src="${imagePath}" alt="${dishName}" class="orderImage" />
                                                     <p class="orderDescription">Your Order:</p>
                                                     <h2>${dishName}</h2>
                                                     <p class="orderFinalPrice">US$ ${finalPrice.toFixed(2)}</p>`);        
