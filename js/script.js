@@ -9,6 +9,7 @@ let container = document.querySelector('.container');
 let loading = document.querySelector('.loading');
 let reloadPage = document.querySelector('.reloadPage');
 
+
 // Carregamento de todos os elementos da página
 function waitForBackgroundImages() {
     return new Promise((resolve) => {
@@ -104,9 +105,9 @@ function renderItems(items, containerId) {
         const element = document.createElement('div');
         element.className = 'item';
         element.innerHTML = `<img src="${item.imageInactive}" alt="${item.name}" />
-                             <h2>${item.name}</h2>
-                             <p>${item.description}</p>
-                             <h4>US$ ${item.price}</h4>`;
+                            <h2>${item.name}</h2>
+                            <p>${item.description}</p>
+                            <h4>US$ ${item.price}</h4>`;
 
         element.addEventListener('click', function() {
             if (activeElement && activeElement !== this) {
@@ -199,9 +200,9 @@ async function submitOrder() {
 
         let orderSentDiv = document.getElementById('orderSent');
         orderSentDiv.insertAdjacentHTML('beforeend', `<img src="${imagePath}" alt="${dishName}" />
-                                                       <p class="orderDescription">Your Order:</p>
-                                                       <h2>${dishName}</h2>
-                                                       <p class="orderFinalPrice">US$ ${finalPrice.toFixed(2)}</p>`);        
+                                                    <p class="orderDescription">Your Order:</p>
+                                                    <h2>${dishName}</h2>
+                                                    <p class="orderFinalPrice">US$ ${finalPrice.toFixed(2)}</p>`);        
 
         document.querySelector('.orderSuccess').style.display = 'grid';
         document.querySelector('.container').style.display = 'none';
@@ -260,27 +261,40 @@ function updateOrderButton() {
     }
 }
 
-// Rolagem para a seção dos ingredientes
-document.querySelector('.scrollToMenu').addEventListener('click', function(event) {
-    event.preventDefault();
-    document.getElementById('menuSection').scrollIntoView({
-        behavior: 'smooth'
-    });
-});
 
+// // teste carrossel dos ingredientes mobile
+function setupCarouselControls() {
+    document.querySelectorAll('.containerIngredients').forEach(section => {
+        const ingredientsContainer = section.querySelector('.ingredients');
+        const indicators = section.querySelector('.indicators').children;
 
-// teste carrossel dos ingredientes mobile
-document.querySelectorAll('.scroll-container').forEach(container => {
-    container.addEventListener('scroll', function() {
-        const scrollPosition = this.scrollLeft;
-        const itemWidth = this.querySelector('.item').offsetWidth;
-        const index = Math.floor(scrollPosition / itemWidth);
+        if (indicators.length > 0) {
+            indicators[0].classList.add('active');
+        }
 
-        const indicators = this.parentNode.querySelector('.indicators').children;
-        Array.from(indicators).forEach((dot, idx) => {
-            dot.classList.toggle('active', idx === index);
+        ingredientsContainer.addEventListener('scroll', function() {
+            let scrollPosition = this.scrollLeft;
+            let itemWidth = this.querySelector('.item').offsetWidth;
+            let index = Math.round(scrollPosition / itemWidth);
+   
+            Array.from(indicators).forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === index);
+            });
+        });
+
+        Array.from(indicators).forEach((indicator, idx) => {
+            indicator.addEventListener('click', function() {
+                let container = this.closest('.containerIngredients').querySelector('.ingredients');
+                let targetItem = container.querySelectorAll('.item')[idx];
+
+                container.scrollTo({
+                    left: targetItem.offsetLeft,
+                    behavior: 'smooth'
+                });
+            });
         });
     });
-});
+}
 
-  
+document.addEventListener('DOMContentLoaded', setupCarouselControls);
+
