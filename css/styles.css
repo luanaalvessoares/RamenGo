@@ -557,16 +557,16 @@ body {
   }
 
   .ingredients .item img {
-    width: 50px;
+    width: 60px;
   }
 
   .ingredients .item h2,
   .ingredients .item h4 {
-    font-size: var(--fontDefault);
+    font-size: var(--fontMiddle);
   }
 
   .ingredients .item p {
-    font-size: var(--fontSmall);
+    font-size: var(--fontDefault);
     line-height: 1.2;
   }
 
