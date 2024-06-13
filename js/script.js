@@ -198,6 +198,8 @@ async function submitOrder() {
         const dishName = `${selectedBroth.name} and ${selectedProtein.name} Ramen`;
         const imagePath = getImagePath(selectedProtein.name);
 
+        await loadImage(imagePath);
+
         let orderSentDiv = document.getElementById('orderSent');
         orderSentDiv.insertAdjacentHTML('beforeend', `<img src="${imagePath}" alt="${dishName}" />
                                                     <p class="orderDescription">Your Order:</p>
@@ -217,6 +219,15 @@ async function submitOrder() {
     } catch (error) {
         console.error("Error sending the order:", error);
     }
+}
+
+async function loadImage(src) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = src;
+    });
 }
 
 const orderButton = document.querySelector('.btn');
@@ -305,4 +316,3 @@ function setupCarouselControls() {
 }
 
 document.addEventListener('DOMContentLoaded', setupCarouselControls);
-

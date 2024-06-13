@@ -33,6 +33,7 @@ html {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 body {
@@ -745,6 +746,15 @@ body {
     flex: 0 0 auto;
     width: 90%;
     margin-block: 0.8em 2em;
+    
+  }
+
+  .ingredients .item:first-child {
+    margin-left: 1em;
+  }
+
+  .ingredients .item:last-child {
+    margin-right: 1em;
   }
 
   .indicators {
