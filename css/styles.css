@@ -431,7 +431,14 @@ body {
 }
 
 .loadingOrder {
-  height: 100px;
+  height: 35px;
+}
+
+.loadingOrderContainer p {
+  color: var(--thirdColor);
+  font-size: var(--fontDefault);
+  font-weight: var(--textMedium);
+  text-align: center;
 }
 
 .dots {

@@ -175,7 +175,7 @@ async function submitOrder() {
     document.querySelector('.price').style.display = 'none';
     document.querySelector('.boxIngredients').style.pointerEvents = 'none';
 
-    document.querySelector('.loadingOrder').style.display = 'block';
+    document.querySelector('.loadingOrderContainer').style.display = 'block';
 
     try {
         const response = await fetch(url, {
