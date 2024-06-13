@@ -592,24 +592,6 @@ body {
     line-height: 1.2;
     margin-top: 1em;
   }
-
-  .ingredients .item {
-    justify-content: space-between;
-    padding: 15px 8px;
-  }
-
-  .ingredients .item img {
-    width: 35px;
-  }
-
-  .ingredients .item p {
-    font-size: var(--fontTiny);
-    line-height: 1;
-  }
-
-  .ingredients .item h2 {
-    line-height: 1;
-  }
 }
 /* SEGUNDA SEÇÃO */
 

@@ -262,7 +262,7 @@ function updateOrderButton() {
 }
 
 
-// // teste carrossel dos ingredientes mobile
+// teste carrossel dos ingredientes mobile
 function setupCarouselControls() {
     document.querySelectorAll('.containerIngredients').forEach(section => {
         const ingredientsContainer = section.querySelector('.ingredients');
