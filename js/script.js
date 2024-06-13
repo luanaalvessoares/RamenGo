@@ -213,7 +213,7 @@ async function submitOrder() {
         });
 
         document.querySelector('.newOrder').addEventListener('click', function() {
-            window.location.reload();
+            window.location.href = window.location.href;
         });
         
     } catch (error) {
@@ -282,7 +282,7 @@ document.querySelector('.scrollToMenu').addEventListener('click', function(event
 
 // Redirecionamentos na logo
 document.querySelector('.logo').addEventListener('click', function() {
-    window.location.reload();
+    window.location.href = window.location.href;
 });
 
 
