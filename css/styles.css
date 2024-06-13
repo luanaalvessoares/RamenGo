@@ -41,6 +41,10 @@ body {
   font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
+.logo {
+  cursor: pointer;
+}
+
 /* PRIMEIRA SEÇÃO */
 .header {
   background-image: url("/assets/images/patternVermelha.webp");

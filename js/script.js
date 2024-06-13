@@ -280,6 +280,12 @@ document.querySelector('.scrollToMenu').addEventListener('click', function(event
     });
 });
 
+// Redirecionamentos na logo
+document.querySelector('.logo').addEventListener('click', function() {
+    window.location.reload();
+});
+
+
 
 // teste carrossel dos ingredientes mobile
 function setupCarouselControls() {
