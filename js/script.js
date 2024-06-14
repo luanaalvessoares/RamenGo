@@ -211,11 +211,7 @@ async function submitOrder() {
         document.querySelector('.orderSuccess').scrollIntoView({
             behavior: 'smooth'
         });
-
-        document.querySelector('.newOrder').addEventListener('click', function() {
-            window.location.href = window.location.href;
-        });
-        
+              
     } catch (error) {
         console.error("Error sending the order:", error);
     }
@@ -279,13 +275,6 @@ document.querySelector('.scrollToMenu').addEventListener('click', function(event
         behavior: 'smooth'
     });
 });
-
-// Redirecionamentos na logo
-document.querySelector('.logo').addEventListener('click', function() {
-    window.location.href = window.location.href;
-});
-
-
 
 // teste carrossel dos ingredientes mobile
 function setupCarouselControls() {
